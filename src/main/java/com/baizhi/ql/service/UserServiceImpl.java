@@ -1,9 +1,11 @@
 package com.baizhi.ql.service;
 
+import com.baizhi.ql.cache.UserCache;
 import com.baizhi.ql.dao.UserDao;
 import com.baizhi.ql.entity.Chapter;
 import com.baizhi.ql.entity.MapUserDto;
 import com.baizhi.ql.entity.User;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

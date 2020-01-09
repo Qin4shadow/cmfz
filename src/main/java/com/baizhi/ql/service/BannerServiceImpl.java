@@ -1,5 +1,7 @@
 package com.baizhi.ql.service;
 
+import com.baizhi.ql.annotation.AddOrSelectAnnotation;
+import com.baizhi.ql.annotation.ClearAnnotation;
 import com.baizhi.ql.dao.BannerDao;
 import com.baizhi.ql.entity.Banner;
 import com.baizhi.ql.entity.BannerPageDto;
@@ -20,6 +22,7 @@ public class BannerServiceImpl implements BannerService {
     @Autowired
     BannerDao bannerDao;
 
+    @AddOrSelectAnnotation
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public List<Banner> selectAll() {
@@ -28,6 +31,7 @@ public class BannerServiceImpl implements BannerService {
     }
 
     //分页查
+    @AddOrSelectAnnotation
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public BannerPageDto selectPage(Integer curPage, Integer pageSize){
@@ -54,21 +58,25 @@ public class BannerServiceImpl implements BannerService {
         return hashMap;
     }
 
+    @ClearAnnotation
     @Override
     public void update(Banner banner) {
         bannerDao.updateByPrimaryKeySelective(banner);
     }
 
+    @ClearAnnotation
     @Override
     public void delete(List ids) {
         bannerDao.deleteByIdList(ids);
     }
 
+    @ClearAnnotation
     @Override
     public void insertList(List list) {
         bannerDao.insertList(list);
     }
 
+    @AddOrSelectAnnotation
     @Override
     public List<Banner> queryBannersByTime() {
         List<Banner> banners = bannerDao.queryBannersByTime();
